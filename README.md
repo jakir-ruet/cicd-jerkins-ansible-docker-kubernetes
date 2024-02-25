@@ -205,7 +205,7 @@ ansible all -m gather_facts --limit NodeIPAddress
 
 ##### Docker Installation on EC2 Instance
 
-Add Docker's official GPG key:
+Add Docker's official GPG/GnuPG (GNU Privacy Guard) key:
 
 ```bash
 sudo apt-get update
