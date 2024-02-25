@@ -4,7 +4,7 @@
 
 ## Visit Us [Lapis Soft](http://www.lapissoft.com)
 
-### The complete DevOps project using Jenkins, Ansible, Docker as well as Kubernetes on AWS.
+#### The complete DevOps project using Jenkins, Ansible, Docker as well as Kubernetes on AWS.
 
 
 ## Courtesy of Jakir
