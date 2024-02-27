@@ -84,6 +84,8 @@ After getting the initial password and put required information & selecting plug
 http://localhost:8080
 ```
 
+###### [Maven Install](./01-jenkins/02-maven-installation.md)
+
 ##### Ansible Install on EC2 Instance (A Control & Managed)
 
 ``` bash

@@ -91,23 +91,22 @@ Setup git plugin
 - Go 'Plugins' Chose 'GitHub Integration' Plugin
 - Go 'Tools' install Github 'Default > Github' save
 
-[Maven Install](https://maven.apache.org/download.cgi)
+##### [Maven Install](https://maven.apache.org/download.cgi) on EC2 Instance
+###### [Install](https://maven.apache.org/install.html)
 ```bash
-cd /opt/
-wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
-tar -xvzf apache-maven-3.9.6-bin.tar.gz
-mv apache-maven-3.9.6 maven
-cd maven
+java --version
+mvn -version
+wget https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+tar -xvf apache-maven-3.6.3-bin.tar.gz
+mv apache-maven-3.6.3 /opt/
+rm -f apache-maven-3.6.3-bin.tar.gz
 ```
-Here we are assign two variable path
+###### Path Setting
 ```bash
-M2_HOME=/opt/maven
-M2_HOME=/opt/maven/bin
-```
-Go .bash_profile
-```bash
-nano .profile
-M2_HOME=/opt/maven
-M2_HOME=/opt/maven/bin
+nano ~/.profile
+M2_HOME='/opt/apache-maven-3.6.3'
+PATH="$M2_HOME/bin:$PATH"
 export PATH
+source ~/.profile
+mvn -version
 ```

@@ -1,5 +1,5 @@
-##### [Maven Install](https://maven.apache.org/install.html) on EC2 Instance
-###### Install
+##### [Maven Install](https://maven.apache.org/download.cgi) on EC2 Instance
+###### [Install](https://maven.apache.org/install.html)
 ```bash
 java --version
 mvn -version
@@ -17,3 +17,10 @@ export PATH
 source ~/.profile
 mvn -version
 ```
+
+###### Setup on Jenkins
+- Manage Jenkins > Plugins > Available plugins > Check (Maven Integration & Maven Invoker) > Install without restart
+- Manage Jenkins > Tools > Maven installations (Add Maven)
+- Name (M2_HOME) > Path (/opt/)
+- Apply > Save
+- Done
