@@ -64,9 +64,7 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 apt-get update
 apt-get install jenkins
 ```
-```bash
 
-```
 Firewall Configuration
 ```bash
 ufw allow 8080
