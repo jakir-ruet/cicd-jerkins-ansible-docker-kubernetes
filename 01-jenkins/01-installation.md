@@ -75,38 +75,8 @@ After getting the initial password and put required information & selecting plug
 ```bash
 http://localhost:8080
 ```
-Add JDK variable under the tools menu
+Add JDK variable under the tools menu on Jenkins
 ```bash
 /usr/lib/jvm/java-1.21.0-openjdk-amd64
 JAVA_HOME
-```
-
-Setup the Git Plugin
-```bash
-apt install git -y
-git --version
-```
-
-Setup git plugin 
-- Go 'Plugins' Chose 'GitHub Integration' Plugin
-- Go 'Tools' install Github 'Default > Github' save
-
-##### [Maven Install](https://maven.apache.org/download.cgi) on EC2 Instance
-###### [Install](https://maven.apache.org/install.html)
-```bash
-java --version
-mvn -version
-wget https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
-tar -xvf apache-maven-3.6.3-bin.tar.gz
-mv apache-maven-3.6.3 /opt/
-rm -f apache-maven-3.6.3-bin.tar.gz
-```
-###### Path Setting
-```bash
-nano ~/.profile
-M2_HOME='/opt/apache-maven-3.6.3'
-PATH="$M2_HOME/bin:$PATH"
-export PATH
-source ~/.profile
-mvn -version
 ```
