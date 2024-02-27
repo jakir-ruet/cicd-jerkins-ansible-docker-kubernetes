@@ -75,3 +75,39 @@ After getting the initial password and put required information & selecting plug
 ```bash
 http://localhost:8080
 ```
+Add JDK variable under the tools menu
+```bash
+/usr/lib/jvm/java-1.21.0-openjdk-amd64
+JAVA_HOME
+```
+
+Setup the Git Plugin
+```bash
+apt install git -y
+git --version
+```
+
+Setup git plugin 
+- Go 'Plugins' Chose 'GitHub Integration' Plugin
+- Go 'Tools' install Github 'Default > Github' save
+
+[Maven Install](https://maven.apache.org/download.cgi)
+```bash
+cd /opt/
+wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+tar -xvzf apache-maven-3.9.6-bin.tar.gz
+mv apache-maven-3.9.6 maven
+cd maven
+```
+Here we are assign two variable path
+```bash
+M2_HOME=/opt/maven
+M2_HOME=/opt/maven/bin
+```
+Go .bash_profile
+```bash
+nano .profile
+M2_HOME=/opt/maven
+M2_HOME=/opt/maven/bin
+export PATH
+```
