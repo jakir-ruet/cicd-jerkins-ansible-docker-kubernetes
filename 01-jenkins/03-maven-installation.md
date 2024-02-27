@@ -21,6 +21,6 @@ mvn -version
 ###### Setup on Jenkins
 - Manage Jenkins > Plugins > Available plugins > Check (Maven Integration & Maven Invoker) > Install without restart
 - Manage Jenkins > Tools > Maven installations (Add Maven)
-- Name (M2_HOME) > Path (/opt/)
+- Name (M2_HOME) > Path (/opt/apache-maven-3.6.3)
 - Apply > Save
 - Done
