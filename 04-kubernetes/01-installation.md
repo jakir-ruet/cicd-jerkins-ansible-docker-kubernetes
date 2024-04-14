@@ -1,5 +1,9 @@
 ##### Kubernetes Installation on EC2 Instance
 
+***Prerequisites***
+To follow this tutorial, you will need:
+1. Ubuntu Server 22.04 server configured with a non-root user and firewall.
+
 #### [AWS CLI Install](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) on EC2 Instance
 ```bash
 apt install awscli

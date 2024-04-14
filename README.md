@@ -4,7 +4,7 @@
 
 ## Visit Us [Lapis Soft](http://www.lapissoft.com)
 
-#### The complete DevOps project using Jenkins, Ansible, Docker as well as Kubernetes on AWS.
+#### The complete DevOps project using Jenkins, Docker, Ansible as well as Kubernetes on AWS.
 
 ##### Jenkins Install on EC2 Instance
 
@@ -14,42 +14,40 @@ To follow this tutorial, you will need:
 2. OpenJDK 11 or upper
 
 ###### Java & OpenJDK Install
-###### [Open JDK Install](https://openjdk.org)
+##### [Open JDK Install](https://jdk.java.net/21/)
+
+```bash
+apt install openjdk-21-jre-headless
+find /usr/lib/jvm/java-21-openjdk-arm64/java* | head -n 3 # searching if required
+nano .bashrc # or .bash_profile or .zshrc (mac)
+JAVA_HOME=/usr/lib/jvm/java-21-openjdk-arm64 # set java path variable
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+export PATH
+source .bashrc # or .bash_profile or .zshrc (mac)
+java --version
+echo $PATH
+echo $JAVA_HOME
+```
+
+Or (my recommendation )
 
 ```bash
 apt update
 java -version
-apt install openjdk-21-jre-headless # for 21 version (latest) - Recommended
-apt install default-jre # for 11 version
-java -version
-```
-
-###### [JDK Install (not for Jenkins)](https://www.oracle.com/java/technologies/downloads/)
-It is for  machine
-```bash
-wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
-dpkg -i jdk-21_linux-x64_bin.deb
-java -version
-```
-
-***For ARM machine*** 
-
-```bash
-echo "$PATH"  # checking the previous path
-wget https://download.oracle.com/java/21/latest/jdk-21_linux-aarch64_bin.tar.gz
-tar xvf jdk-21_linux-aarch64_bin.tar.gz
-mv jdk-21.0.2 /usr/local/
-ls -a
-nano .profile
-export PATH="$PATH:$HOME/usr/local/jdk-21.0.2/bin"
-```
-
-It make variables available in your current shell session.
-
-```bash
-source ~/.profile
-echo $PATH
+cd /opt
+# as per your OS you should download specified version. my case aarch64.
+wget https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_linux-aarch64_bin.tar.gz
+tar zxvf openjdk-21.0.2_linux-aarch64_bin.tar.gz
+mv jdk-21.0.2 jdk-21
+whereis java # searching if required
+nano .bashrc # or .bash_profile or .zshrc (mac)
+JAVA_HOME=/opt/jdk-21 # set java path variable
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+export PATH
+source .bashrc # or .bash_profile or .zshrc (mac)
 java --version
+echo $PATH
+echo $JAVA_HOME
 ```
 
 ###### [Install](https://www.jenkins.io/doc/book/installing/linux/) Jenkins LTS.
@@ -85,6 +83,32 @@ http://localhost:8080
 ###### [Git Install & Configure on Jenkins](./01-jenkins/02-git-installation.md)
 
 ###### [Maven Install & Configure on Jenkins](./01-jenkins/03-maven-installation.md)
+
+##### Docker Installation on EC2 Instance
+
+Add Docker's official GPG/GnuPG (GNU Privacy Guard) key:
+
+```bash
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+```
+
+Add the repository to Apt sources:
+```bash
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
+
+To install the latest version, run:
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
 
 ##### Ansible Install on EC2 Instance (A Control & Managed)
 
@@ -203,32 +227,6 @@ ansible all -m gather_facts
 Checking specific connected node's information
 ```bash
 ansible all -m gather_facts --limit NodeIPAddress
-```
-
-##### Docker Installation on EC2 Instance
-
-Add Docker's official GPG/GnuPG (GNU Privacy Guard) key:
-
-```bash
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-```
-
-Add the repository to Apt sources:
-```bash
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-```
-
-To install the latest version, run:
-```bash
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 ##### Kubernetes Installation on EC2 Instance

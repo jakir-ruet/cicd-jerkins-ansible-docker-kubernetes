@@ -1,5 +1,9 @@
 ##### Ansible Install on EC2 Instance (A Control & Managed)
 
+***Prerequisites***
+To follow this tutorial, you will need:
+1. Ubuntu Server 22.04 server configured with a non-root user and firewall.
+
 ``` bash
 add-apt-repository ppa:ansible/ansible
 ```
